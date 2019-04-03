@@ -17,7 +17,7 @@ const reasoning = function(location){
        weapon = 'Dagger';
       break;
     case 'Library':
-      const weapon = 'Spanner';
+       const weapon = 'Spanner';
       break;
     }
     return weapon;
@@ -38,5 +38,5 @@ const investigation = function(){
 
 killer = 'Mr Green';
 investigation ();
-const verdict = surprisingConclusion(scenario.murderer, scenario.room, scenario.weapon, theDeceased);
+const verdict = surprisingConclusion(scenario.murderer, scenario.weapon, scenario.room, theDeceased);
 console.log(verdict);
