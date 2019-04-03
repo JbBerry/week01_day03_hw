@@ -154,7 +154,7 @@ const verdict = declareMurderer();
 console.log(verdict);
 */
 // expected result: Mr. Green
-// murder starts as "Professor Plum". changeMurderer() is called and reassigns the value to "Mr. Green". unexpectedOutcome() and plotTwist() are then called and reasigns the values to "Colonel Mustard" and "Miss Scarlet".
+// murder starts as "Professor Plum". changeMurderer() is called and reassigns the value to "Mr. Green". unexpectedOutcome() and plotTwist() are then called and reasigns the values within the block to "Colonel Mustard" and then globaly to "Miss Scarlet".
 // "murderer = 'Mr. Green'" in changeMurderer is loosly defined and so has a global scope.
 //when verdict = declareMurderer() is called it is then set as "Mr.Green" due to the global scope of line 139 polluting line 153.
 
@@ -211,7 +211,45 @@ console.log(verdict);
 // the if ... let statement will reassign murderer to "Mrs. Peacock" but it has block scope.
 // when declareMurderer() is called it will remain "Professor Plum"
 
-
 // ===== Extensions =========================
-//
-// Make up your own episode!
+
+let theDeceased = undefined;
+const scenario ={
+  murderer: "Professor Plum",
+  room: "Library",
+  weapon: "Rope"
+}
+
+const reasoning = function(location){
+  let weapon = 'Lead Pipe'
+  switch (location) {
+    case 'Dining Room':
+      weapon = 'Candlestick';
+      break;
+    case 'Kitchen':
+       weapon = 'Dagger';
+      break;
+    case 'Library':
+      const weapon = 'Spanner';
+      break;
+    }
+    return weapon;
+    theDeceased = 'Mr Boddy';
+  }
+
+const surprisingConclusion = function(killer, what, where, theDeceased='Dr. Black') {
+    return `${killer} killed ${theDeceased} with the ${what} in the ${where}.`
+  }
+
+const investigation = function(){
+  if (scenario.murderer != 'Colonel Mustard'){
+       const killer = 'Mrs Peacock';
+    }
+    scenario.murderer = killer;
+    scenario.weapon = reasoning(scenario.room);
+  }
+
+killer = 'Mr Green';
+investigation ();
+const verdict = surprisingConclusion(scenario.murderer, scenario.room, scenario.weapon, theDeceased);
+console.log(verdict);
